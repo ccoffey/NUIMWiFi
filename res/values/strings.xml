@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NUIMWiFi</string>
+    <string name="service_name">NUIMWiFiService</string>
+    <string name="ssid">NUIMWireless</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="label_student_number">Student Number</string>
+    <string name="student_number_hint"></string>
+    <string name="image_content_description">NUIMWiFi logo</string>
+    <string name="label_password">Password</string>
+    <string name="save_button_text">Save</string>
+</resources>
