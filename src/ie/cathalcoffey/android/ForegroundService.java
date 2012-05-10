@@ -16,6 +16,7 @@
 
 package ie.cathalcoffey.android;
 
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -35,9 +36,11 @@ import java.lang.reflect.Method;
  * Android 1.0.
  */
 public class ForegroundService extends Service {
-    static final String ACTION_FOREGROUND = "com.example.android.apis.FOREGROUND";
+
+	static final String ACTION_FOREGROUND = "com.example.android.apis.FOREGROUND";
     static final String ACTION_BACKGROUND = "com.example.android.apis.BACKGROUND";
 
+    
     private static final Class<?>[] mSetForegroundSignature = new Class[] {
         boolean.class};
     private static final Class<?>[] mStartForegroundSignature = new Class[] {
@@ -52,7 +55,7 @@ public class ForegroundService extends Service {
     private Object[] mSetForegroundArgs = new Object[1];
     private Object[] mStartForegroundArgs = new Object[2];
     private Object[] mStopForegroundArgs = new Object[1];
-
+    
     void invokeMethod(Method method, Object[] args) {
         try {
             method.invoke(this, args);
@@ -144,7 +147,7 @@ public class ForegroundService extends Service {
         handleCommand(intent);
         // We want this service to continue running until it is explicitly
         // stopped, so return sticky.
-        return START_REDELIVER_INTENT;
+        return  START_REDELIVER_INTENT;
     }
 
     void handleCommand(Intent intent) {

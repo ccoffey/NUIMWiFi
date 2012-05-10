@@ -27,14 +27,14 @@
         </activity>
         <receiver 
             android:name=".MyStartupIntentReceiver" 
-            android:enabled="true" 
-            android:exported="true">
+            android:exported="false">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 			</intent-filter>
 		</receiver>
 		<service 
 		    android:name=".MyService"
+		    android:exported="false"
 		    android:label="@string/service_name">
 			<intent-filter>
 				<action android:name="ie.cathalcoffey.android.MyService" />
