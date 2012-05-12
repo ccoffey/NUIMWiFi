@@ -16,7 +16,6 @@
 
 package ie.cathalcoffey.android;
 
-import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -48,7 +47,7 @@ public class ForegroundService extends Service {
     private static final Class<?>[] mStopForegroundSignature = new Class[] {
         boolean.class};
 
-    private NotificationManager mNM;
+    protected NotificationManager mNM;
     private Method mSetForeground;
     private Method mStartForeground;
     private Method mStopForeground;
@@ -147,7 +146,7 @@ public class ForegroundService extends Service {
         handleCommand(intent);
         // We want this service to continue running until it is explicitly
         // stopped, so return sticky.
-        return  START_REDELIVER_INTENT;
+        return  START_STICKY;
     }
 
     void handleCommand(Intent intent) {

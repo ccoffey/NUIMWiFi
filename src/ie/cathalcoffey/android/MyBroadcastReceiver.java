@@ -9,7 +9,6 @@ import android.net.NetworkInfo.State;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
 
@@ -28,7 +27,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 		    	String password = sp.getString("@string/password", "");
 		    	
 		    	if(ssid != null && ssid.equalsIgnoreCase(context.getText(R.string.ssid).toString())){
-		    		NUIMWiFi.login(username, password);
+		    		new NUIMWiFi().execute(username, password);
 		    	}
             }
 	    } 

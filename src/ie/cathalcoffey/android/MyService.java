@@ -14,8 +14,11 @@ public class MyService extends ForegroundService {
 		
 		this.bc = new MyBroadcastReceiver();
 		registerReceiver(bc, new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
+		
+		// Causes the operating system to weight this service as more important as it is doing constant work.
+		new BusyWork().execute();
 	}
-
+	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -27,4 +30,5 @@ public class MyService extends ForegroundService {
 	@Override
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
-	}}
+	}
+}
