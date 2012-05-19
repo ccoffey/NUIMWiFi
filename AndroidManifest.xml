@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     android:installLocation="internalOnly"
     package="ie.cathalcoffey.android"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="6"
+    android:versionName="1.5" >
     <uses-sdk android:minSdkVersion="8" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -30,6 +30,12 @@
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 			</intent-filter>
 		</receiver>
+		<receiver android:name=".UpdateReceiver">
+	        <intent-filter>
+	            <action android:name="android.intent.action.PACKAGE_REPLACED" />
+	            <data android:scheme="package" />
+	        </intent-filter>
+    	</receiver>
 		<service 
 		    android:name=".MyService"
 		    android:exported="false"

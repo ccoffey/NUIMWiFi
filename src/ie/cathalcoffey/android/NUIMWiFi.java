@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -13,6 +14,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 public class NUIMWiFi extends AsyncTask<String, Void, Void>{
 
@@ -32,7 +35,8 @@ public class NUIMWiFi extends AsyncTask<String, Void, Void>{
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 	        // Execute HTTP Post Request
-	       httpclient.execute(httppost);
+	       HttpResponse response = httpclient.execute(httppost);
+	       Log.v("NUIMWiFi: HttpResponse", response.toString());
 	    } 
 	    
 	    catch (ClientProtocolException e) {
