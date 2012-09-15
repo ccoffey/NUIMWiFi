@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     android:installLocation="internalOnly"
-    package="ie.cathalcoffey.android"
+    package="ie.cathalcoffey.android.nuimwifi"
     android:versionCode="7"
     android:versionName="1.6" >
     <uses-sdk android:minSdkVersion="8" />
@@ -41,7 +41,7 @@
 		    android:exported="false"
 		    android:label="@string/service_name">
 			<intent-filter>
-				<action android:name="ie.cathalcoffey.android.MyService" />
+				<action android:name="ie.cathalcoffey.android.nuimwifi.MyService" />
 			</intent-filter>
 		</service>
     </application>
