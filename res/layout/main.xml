@@ -23,6 +23,7 @@
 	        android:src="@drawable/nuimwifi_logo_2" />
 	
 	    <TextView
+	        android:layout_marginTop="5dip"
 	        android:inputType="text"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
@@ -49,8 +50,9 @@
 		    android:inputType="textPassword" />
 	
 		<Button
+		    android:layout_marginTop="5dip"
 		    android:id="@+id/button1"
-		    android:layout_width="wrap_content"
+		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center"
 		    android:text="@string/save_button_text" />
