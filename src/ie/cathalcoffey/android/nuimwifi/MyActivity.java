@@ -9,8 +9,10 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 
 public class MyActivity extends Activity {
 	SharedPreferences sp;
@@ -23,7 +25,14 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
         setContentView(R.layout.main);
+        
+        ScrollView sView = (ScrollView)findViewById(R.id.scrollview);
+        sView.setVerticalScrollBarEnabled(false);
+        sView.setHorizontalScrollBarEnabled(false);
         
         final Button button = (Button) findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
