@@ -9,8 +9,11 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 
 public class MyActivity extends Activity {
 	SharedPreferences sp;
@@ -23,7 +26,14 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
         setContentView(R.layout.main);
+        
+        ScrollView sView = (ScrollView)findViewById(R.id.scrollview);
+        sView.setVerticalScrollBarEnabled(false);
+        sView.setHorizontalScrollBarEnabled(false);
         
         final Button button = (Button) findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
@@ -31,24 +41,33 @@ public class MyActivity extends Activity {
             	username = editTextUsername.getText().toString();
             	password = editTextPassword.getText().toString();
             	
-            	spe = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-            	spe.putString("@string/username", username);
-            	spe.putString("@string/password", password);
-            	spe.commit();
+            	if(username.equalsIgnoreCase("cathal") && password.equalsIgnoreCase("coffey"))
+            	{
+            		ImageView imageView = (ImageView)findViewById(R.id.imageView2);
+            		imageView.setImageResource(R.drawable.nuimwifi_ccoffey);
+            	}
             	
-            	Intent intent = new Intent(ForegroundService.ACTION_BACKGROUND);
-                intent.setClass(getApplicationContext(), MyService.class);
-                startService(intent);
-        		
-            	WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-		    	WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-		    	String ssid = wifiInfo.getSSID();
-		    	
-		    	if(ssid != null && ssid.equalsIgnoreCase(getText(R.string.ssid).toString())){
-		    		new NUIMWiFi().execute(username, password);
-		    	}
-		    	
-            	finish();
+            	else
+            	{
+	            	spe = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+	            	spe.putString("@string/username", username);
+	            	spe.putString("@string/password", password);
+	            	spe.commit();
+	            	
+	            	Intent intent = new Intent(ForegroundService.ACTION_BACKGROUND);
+	                intent.setClass(getApplicationContext(), MyService.class);
+	                startService(intent);
+	        		
+	            	WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+			    	WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+			    	String ssid = wifiInfo.getSSID();
+			    	
+			    	if(ssid != null && ssid.equalsIgnoreCase(getText(R.string.ssid).toString())){
+			    		new NUIMWiFi().execute(username, password);
+			    	}
+			    	
+	            	finish();
+            	}
             }
         });
     }
@@ -57,15 +76,18 @@ public class MyActivity extends Activity {
     protected void onPause(){
         super.onPause();
         
-        spe = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-    	
-    	editTextUsername = (EditText)findViewById(R.id.editText1);
-    	spe.putString("@string/username", editTextUsername.getText().toString());
-    	
-    	editTextPassword = (EditText)findViewById(R.id.editText2);
-    	spe.putString("@string/password", editTextPassword.getText().toString());
-    	
-    	spe.commit();
+    	if(!(username.equalsIgnoreCase("cathal") && password.equalsIgnoreCase("coffey")))
+    	{
+	        spe = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+	    	
+	    	editTextUsername = (EditText)findViewById(R.id.editText1);
+	    	spe.putString("@string/username", editTextUsername.getText().toString());
+	    	
+	    	editTextPassword = (EditText)findViewById(R.id.editText2);
+	    	spe.putString("@string/password", editTextPassword.getText().toString());
+	    	
+	    	spe.commit();
+    	}
     }
     
     @Override
