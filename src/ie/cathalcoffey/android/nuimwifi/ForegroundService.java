@@ -159,7 +159,7 @@ public class ForegroundService extends Service {
             CharSequence text = "A";
 
             // Set the icon, scrolling text and timestamp
-            Notification notification = new Notification(R.drawable.nuimwifi_launcher_2, text, System.currentTimeMillis());
+            Notification notification = new Notification(R.drawable.nuimwifi_launcher, text, System.currentTimeMillis());
 
             // The PendingIntent to launch our activity if the user selects this notification
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MyActivity.class), 0);
