@@ -26,7 +26,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 		    	String username = sp.getString("@string/username", "");
 		    	String password = sp.getString("@string/password", "");
 		    	
-		    	if(ssid != null && ssid.equalsIgnoreCase(context.getText(R.string.ssid).toString())){
+		    	String NUIMWireless = context.getString(R.string.ssid);
+		    	if(ssid != null && ssid.toLowerCase().contains(NUIMWireless.toLowerCase())){
 		    		new NUIMWiFi().execute(username, password);
 		    	}
             }

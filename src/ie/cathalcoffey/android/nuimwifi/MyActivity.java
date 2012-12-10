@@ -64,7 +64,7 @@ public class MyActivity extends Activity {
 			    	String ssid = wifiInfo.getSSID();
 			    	String NUIMWireless = getString(R.string.ssid);
 			    	
-			    	if(ssid != null && ssid.contains(NUIMWireless))
+			    	if(ssid != null && ssid.toLowerCase().contains(NUIMWireless.toLowerCase()))
 			    	{
 			            new NUIMWiFi().execute(username, password);
 			    	}
