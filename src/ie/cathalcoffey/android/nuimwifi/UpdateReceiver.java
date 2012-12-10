@@ -8,7 +8,7 @@ public class UpdateReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		if (intent.getDataString().contains("ie.cathalcoffey.android.nuimwifi"))
+		if (intent.getDataString().contains("ie.cathalcoffey.android"))
 		{
 			Intent serviceIntent = new Intent(ForegroundService.ACTION_BACKGROUND);
 			serviceIntent.setClass(context, MyService.class);
